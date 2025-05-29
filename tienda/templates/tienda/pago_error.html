@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="alert alert-danger">
+    <h2>Error en el pago</h2>
+    <p><strong>Error:</strong> {{ error }}</p>
+    {% if token %}
+    <p>Token de transacción: {{ token }}</p>
+    {% endif %}
+    <a href="{% url 'carrito' %}" class="btn btn-primary">Volver al carrito</a>
+</div>
+{% endblock %}

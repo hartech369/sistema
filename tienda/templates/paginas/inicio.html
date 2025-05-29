@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block contenido %}
+
+<!-- Sección de Bienvenida con Imagen a la Izquierda y Texto a la Derecha -->
+<div class="flex flex-col md:flex-row items-center bg-white">
+    <!-- Imagen de snack a la Izquierda -->
+    <div class="flex-shrink-0 w-full md:w-1/2 h-[90vh] bg-cover bg-center">
+        <img src="imagenes/portada.png" alt="Imagen de portada">
+    </div>
+    
+    <!-- Texto a la Derecha -->
+    <div class="flex items-center w-full md:w-1/2 p-2 bg-white">
+        <div class="text-center md:text-left space-y-6">
+            <h2 class="text-4xl font-extrabold tracking-tight text-[#00aa21] md:text-5xl lg:text-6xl">Los snacks más deliciosos</h2>
+                <div class="text-gray-600 text-lg mb-6">
+                    <p>¡Snacks que no podrás dejar! Descubre nuestra amplia selección de snacks para todos los gustos. Tu destino favorito para los snacks más deliciosos y adictivos. Descubre una amplia variedad de sabores: desde los clásicos sal de mar y barbacoa hasta las combinaciones más atrevidas como jalapeño, camote frito, platanos con sal de mar y mas...</p>
+                    <br>
+                    <button><a href="{% url 'catalogoProductos' %}" class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#e60304] bg-opacity-60 hover:bg-opacity-70 md:py-4 md:text-lg md:px-10">Comprar ahora</a></button>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

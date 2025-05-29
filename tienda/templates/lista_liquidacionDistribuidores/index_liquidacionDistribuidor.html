@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista de liquidaciones de Distribuidores{% endblock %}
+
+{% block contenido %}
+
+<h1 class="text-3xl font-semibold text-center text-green-600 mb-6">Lista de liquidaciones de Distribuidores</h1>
+
+<div class="bg-white">
+    
+    <div class="p-6">
+        
+        <table class="min-w-full table-auto">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Fecha Liquidacion</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Monto Total</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Comision</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Estado</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID Mix de Carga</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for liDistribuidor in liDistribuidores %}
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">{{ liDistribuidor.id_liquidacion_distribucion }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ liDistribuidor.fecha_liquidacion }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ liDistribuidor.total_distribuido }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ liDistribuidor.comision }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ liDistribuidor.estado }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ liDistribuidor.idMixCarga }}</td>
+                    <td class="px-6 py-4 text-sm">
+                        <a href="{% url 'editar_liquidacionDistribuidor' liDistribuidor.id_liquidacion_distribucion %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center">
+                            Editar
+                        </a> |
+                        <a href="{% url 'eliminar_liquidacionDistribuidor' liDistribuidor.id_liquidacion_distribucion %}" class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 text-center">
+                            Borrar
+                        </a>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="p-4 text-center">
+        <a href="{% url 'crear_liquidacionDistribuidor' %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            Agregar nueva liquidacion de Distribuidor
+        </a>
+    </div>
+</div>
+
+{% endblock %}

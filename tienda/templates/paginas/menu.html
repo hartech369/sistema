@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Iniciar Sesión{% endblock %}
+
+{% block contenido %}
+
+    <h1 class="text-3xl font-bold text-green-700 text-center">Ver Tablas</h1>
+
+    <div class="w-full h-full overflow-y-auto p-6 bg-white shadow-lg">
+        <div class="max-w-md mx-auto flex flex-col space-y-3">
+            <a href="{% url 'tienda' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Personas</a>
+            <a href="{% url 'lista_productos' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Productos</a>
+            <a href="{% url 'lista_rutas' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Rutas</a>
+            <a href="{% url 'lista_distribuidores' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Distribuidores</a>
+            <a href="{% url 'lista_almacenes' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Almacenes</a>
+            <a href="{% url 'lista_cCorporativas' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Compras corporativas</a>
+            <a href="{% url 'lista_pedidos' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Pedidos</a>
+            <a href="{% url 'lista_detallePedidos' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Detalles de pedidos</a>
+            <a href="{% url 'lista_detalleCompras' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Detalles de compras</a>
+            <a href="{% url 'lista_mixCargas' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Mix de Cargas</a>
+            <a href="{% url 'lista_libroVentas' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Libro de ventas</a>
+            <a href="{% url 'lista_liquidacionDistribuidores' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Liquidación de distribuidores</a>
+            <a href="{% url 'lista_liquidacionVentas' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Liquidación de ventas</a>
+            <a href="{% url 'lista_inventarios' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Inventarios</a>
+            <a href="{% url 'lista_kardex' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Kardex</a>
+            <a href="{% url 'lista_detalleFacturas' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Detalles de Facturas</a>
+            <a href="{% url 'lista_facturas' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Facturas</a>
+            <a href="{% url 'lista_notaVentas' %}" class="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-center">Notas de Ventas</a>
+        </div>
+    </div>
+
+{% endblock %}

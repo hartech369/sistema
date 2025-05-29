@@ -1,0 +1,108 @@
+<!-- templates/pdf/factura_template.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Factura {{ factura.numeroFactura }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <img src="{{ logo_url }}" class="h-16 w-auto" alt="Logo">
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <div class="max-w-4xl mx-auto p-8">
+        <!-- Encabezado -->
+        <div class="flex justify-between items-start border-b pb-6 mb-6">
+            <div>
+                <h1 class="text-2xl font-bold text-blue-700">{{ empresa.nombre }}</h1>
+                <p class="text-sm text-gray-600">{{ empresa.giro }}</p>
+                <p class="text-sm text-gray-600">RUT: {{ empresa.rut }}</p>
+                <p class="text-sm text-gray-600">{{ empresa.direccion }}</p>
+                <p class="text-sm text-gray-600">Teléfono: {{ empresa.telefono }} | Email: {{ empresa.email }}</p>
+            </div>
+            <div class="text-right">
+                <h2 class="text-xl font-bold text-green-600">FACTURA ELECTRÓNICA</h2>
+                <h3 class="text-lg font-bold">Nº {{ factura.numeroFactura }}</h3>
+                <p class="text-sm">Fecha emisión: {{ factura.fechaEmision|date:"d/m/Y" }}</p>
+            </div>
+        </div>
+
+        <!-- Datos cliente -->
+        <div class="grid grid-cols-2 gap-6 mb-6">
+            <div class="bg-blue-50 p-4 rounded">
+                <h4 class="font-semibold text-gray-800">Señor(es):</h4>
+                <p class="text-gray-700">{{ factura.razon_social }}</p>
+                <p class="text-gray-700">RUT: {{ factura.rut }}</p>
+                <p class="text-gray-700">Dirección: {{ factura.direccion_fiscal }}</p>
+            </div>
+            <div class="bg-blue-50 p-4 rounded">
+                <h4 class="font-semibold text-gray-800">Documento Tributario:</h4>
+                <p class="text-gray-700">Tipo: {{ factura.tipoDocumento }}</p>
+                <p class="text-gray-700">RUT Emisor: {{ empresa.rut }}</p>
+                <p class="text-gray-700">Código Sucursal: 0</p>
+                <p class="text-gray-700">Condición de Venta: Contado</p>
+            </div>
+        </div>
+
+        <!-- Tabla de items -->
+        <table class="w-full mb-6">
+            <thead class="bg-blue-600 text-white">
+                <tr>
+                    <th class="px-4 py-2 text-left">Cantidad</th>
+                    <th class="px-4 py-2 text-left">Unidad</th>
+                    <th class="px-4 py-2 text-left">Descripción</th>
+                    <th class="px-4 py-2 text-right">Precio Unitario</th>
+                    <th class="px-4 py-2 text-right">Total</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                {% for detalle in detalles %}
+                <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-2">{{ detalle.cantidad }}</td>
+                    <td class="px-4 py-2">UN</td>
+                    <td class="px-4 py-2">{{ detalle.descripcion }}</td>
+                    <td class="px-4 py-2 text-right">$ {{ detalle.precioUnitario|format_number }}</td>
+                    <td class="px-4 py-2 text-right">$ {{ detalle.subtotal|format_number }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot class="bg-gray-100 font-semibold">
+                <tr>
+                    <td colspan="4" class="px-4 py-2 text-right">Subtotal</td>
+                    <td class="px-4 py-2 text-right">$ {{ factura.totalBruto|format_number }}</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="px-4 py-2 text-right">IVA 19%</td>
+                    <td class="px-4 py-2 text-right">$ {{ factura.iva|format_number }}</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="px-4 py-2 text-right">TOTAL</td>
+                    <td class="px-4 py-2 text-right text-xl text-green-600">$ {{ factura.total_Neto|format_number }}</td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="px-4 py-2 text-center bg-blue-50">
+                        SON {{ total_letras|upper }} PESOS
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <!-- Información adicional -->
+        <div class="mt-8">
+            <h4 class="font-semibold text-gray-800">Condiciones de pago:</h4>
+            <p class="text-gray-700">Pago en efectivo o transferencia bancaria</p>
+            
+            <h4 class="font-semibold text-gray-800 mt-4">Forma de pago:</h4>
+            <p class="text-gray-700">Contado</p>
+            
+            <h4 class="font-semibold text-gray-800 mt-4">Observaciones:</h4>
+            <p class="text-gray-700">No se aceptan devoluciones después de 7 días desde la fecha de emisión</p>
+        </div>
+
+        <!-- Información SII -->
+        <div class="mt-12 pt-6 border-t border-gray-300 text-center text-xs text-gray-600">
+            <p>Este documento es un documento tributario electrónico emitido por el sistema de facturación electrónica de {{ empresa.nombre }}</p>
+            <p>Documento válido para crédito fiscal y para respaldo de gasto efectivo</p>
+            <p>Para validar este documento visite www.sii.cl</p>
+        </div>
+    </div>
+</body>
+</html>

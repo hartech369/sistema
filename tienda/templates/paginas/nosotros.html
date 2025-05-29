@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+    
+
+{% block titulo %}Nosotros{% endblock %}
+
+{% block contenido %}
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+
+<div class="bg-white py-12">
+
+    <!-- Hero Section con imagen de fondo y título -->
+    
+    <div class="relative bg-cover h-96" style="background-image: url('/imagenes/nosotros.jpg'); background-position: center top 35%;">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">   
+            <h1 class="text-3xl font-bold text-white">Nosotros</h1>
+        </div>  
+    </div>
+    
+    <!-- Somos -->
+    <section class="my-12 flex flex-wrap items-center flex-row-reverse">
+        <div class="w-full lg:w-1/2 px-6">
+            <h2 class="text-3xl font-bold text-red-500 mb-4">¿Quiénes somos?</h2>
+            <p class="text-lg text-gray-700">
+                Somos apasionados por brindar refrescos de calidad que se adapten a los gustos y preferencias de cada cliente. Nos esforzamos por hacer de cada compra una experiencia sencilla, rápida y satisfactoria, con un compromiso profundo hacia la excelencia en cada detalle. Desde los clásicos favoritos hasta nuevas opciones innovadoras, trabajamos para que nuestros clientes encuentren siempre la mejor selección de gaseosas en un solo lugar. Nos caracteriza la dedicación, el compromiso con la calidad y la creencia de que una bebida refrescante puede alegrar cualquier momento.
+            </p>
+        </div>
+        <div class="w-1 lg:w-1/2 px-6 mt-6 lg:mt-0">
+            <img src="imagenes/somos.jpg" alt="Imagen de la misión" class="h-65 mx-auto rounded-full">
+        </div>
+    </section>
+
+    <!-- Visión con imagen alternada -->
+    <section class="my-12 flex flex-wrap items-center">
+        <div class="w-full lg:w-1/2 px-6">
+            <h2 class="text-3xl font-bold text-red-500 mb-4">Visión - Transcender cinco continentes</h2>
+            <p class="text-lg text-gray-700">
+                Ser una organización global que trasciende en el tiempo. Con presencia dentro de 5 continentes, centrada en el desarrollo profesional y ético de sus trabajadores, siendo socialmente responsable. 
+            </p>
+        </div>
+        <div class="w-full lg:w-1/2 px-6 mt-6 lg:mt-0">
+            <img src="imagenes/vision.png" alt="Imagen de la visión" class="w-100 h-100 mx-auto rounded-full">
+        </div>
+    </section>
+
+    <!--Misión con imagen alternada -->
+    <section class="my-12 flex flex-wrap items-center flex-row-reverse">
+        <div class="w-full lg:w-1/2 px-6">
+            <h2 class="text-3xl font-bold text-red-500 mb-4">Misión que nos diferencia</h2>
+            <p class="text-lg text-gray-700">
+                Ofrecer al mercado mundial bebidas y alimentos saludables para toda la familia, con calidad internacional y de manera competitiva. <!--Proveer a nuestros clientes con las mejores opciones de gaseosas y bebidas refrescantes, garantizando la más alta calidad en cada producto que ofrecemos. Nos esforzamos por ser la tienda online de confianza, innovando constantemente en nuestra oferta, mejorando la experiencia de compra digital y contribuyendo al bienestar de nuestros clientes con productos accesibles y deliciosos.-->
+            </p>
+        </div>
+        <div class="w-full lg:w-1/2 px-6 mt-6 lg:mt-0">
+            <img src="imagenes/mision.jpg" alt="Imagen de la misión" class="w-100 h-100 mx-auto rounded-full">
+        </div>
+    </section>
+
+    <!--Valores con imagen alternada -->
+    <section class="my-12 flex flex-wrap items-center">
+        <div class="w-full lg:w-1/2 px-6">
+            <h2 class="text-3xl font-bold text-red-500 mb-4">Nuestros Valores</h2>
+            <ul class="list-disc pl-6 space-y-2 text-lg text-gray-700">
+                
+                <li>Liderazgo con cercania: La gente es lo mas valioso, valoramos por igual a nuestros colaboradores, a los clientes y a la comunidad.</li>
+                <li>Austeridad y pertenencia: ISM es nuestra familia y la sociedad es parte de nuestro ADN. Cuidamos los recursos de ISM como si fueran propios y los administramos de forma eficiente.</li>
+                <li>Integridad: Nos esforzamos para que nuestra conducta...</li>
+                <li>Innovacion y versatilidad: Nos adaptamos a los mercados. Siempre estamos atentos a nuevas oportunidades y nos preocupamos por atender y conocer las necesidades de nuestros clientes y consumidores.</li>
+                <li>Excelencia: Estamos 100% comprometidos con generar y entregar valor a nuestros clientes</li>
+                
+            </ul>
+        </div>
+        <div class="w-full lg:w-1/2 px-6 mt-6 lg:mt-0">
+            <img src="imagenes/valores.png" alt="Imagen de los valores" class="w-90 h-80 mx-auto rounded-full">
+        </div>
+    </section>
+
+</div>
+
+{% endblock %}

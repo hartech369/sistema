@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista de personas{% endblock %}
+
+{% block contenido %}
+
+<h1 class="text-3xl font-semibold text-center text-green-600 mb-6">Lista de Personas</h1>
+
+<div class="bg-white">
+    
+    <div class="p-6">
+        
+        <table class="min-w-full table-auto">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Nombres</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Apellidos</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">RUT</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Digito Verificador</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Telefono</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Email</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Direccion</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Ciudad</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Rol</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Password</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for persona in personas %}
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">{{ persona.id_persona }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ persona.nombres }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ persona.apellidos }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ persona.rut }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ persona.diVerifica }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ persona.telefono }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ persona.email }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ persona.direccion }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ persona.ciudad }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ persona.rol }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ persona.password }}</td>
+                    <td class="px-6 py-4 text-sm">
+                        <a href="{% url 'editar' persona.id_persona %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center">
+                            Editar
+                        </a> |
+                        <a href="{% url 'eliminar' persona.id_persona %}" class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 text-center">
+                            Borrar
+                        </a>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="p-4 text-center">
+        <a href="{% url 'crear' %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            Agregar nueva persona
+        </a>
+    </div>
+</div>
+
+{% endblock %}

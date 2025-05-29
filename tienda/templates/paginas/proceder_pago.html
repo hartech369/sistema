@@ -1,0 +1,68 @@
+<!-- proceder_pago.html -->
+{% extends 'base.html' %}
+{% block titulo %}Proceder al Pago{% endblock %}
+{% block contenido %}
+<div class="container mx-auto py-8">
+    <h1 class="text-3xl font-bold text-center text-green-600 mb-8">Confirmar Pago</h1>
+    <div class="bg-white rounded-lg shadow-md p-6">
+        {% if carrito %}
+            <table class="w-full text-left">
+                <thead>
+                    <tr class="border-b">
+                        <th class="p-4">Producto</th>
+                        <th class="p-4">Cantidad</th>
+                        <th class="p-4">Precio Unitario</th>
+                        <th class="p-4">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item_id, item_data in carrito.items %}
+                    <tr class="border-b">
+                        <td class="p-4">{{ item_data.nombre }}</td>
+                        <td class="p-4">{{ item_data.cantidad }}</td>
+                        <td class="p-4">CLP$ {{ item_data.precio|floatformat:0 }}</td>
+                        <td class="p-4">CLP$ {{ item_data.subtotal|floatformat:0 }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr class="font-bold">
+                        <td colspan="3" class="p-4 text-right">Total:</td>
+                        <td class="p-4">$ {{ total|floatformat:0 }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        {% else %}
+            <p class="text-gray-600 text-center">Tu carrito está vacío.</p>
+        {% endif %}
+        <!--
+        <form action="{% url 'confirmar_pago' %}" method="POST" enctype="multipart/form-data" class="mt-8">
+            {% csrf_token %}
+            <label for="comprobante" class="block text-gray-700 mb-2">Sube tu comprobante de pago:</label>
+            <input type="file" name="comprobante" id="comprobante" class="w-full border rounded px-3 py-2 mb-4" required>
+            
+            <button type="submit" class="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors duration-200">
+                Confirmar Pago
+            </button>         
+            
+        </form>
+    -->
+    <form action="{% url 'iniciar_pago' %}" method="post">
+        {% csrf_token %}
+        <button class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md" type="submit">Pagar con Webpay</button>
+    </form>
+    <br>
+    <h3 class="text-lg font-semibold text-gray-800 ">Si no quieres pagar con Webpay, puedes subir tu comprobante de pago:</h3>
+        
+    <form action="{% url 'confirmar_pago' %}" method="POST" enctype="multipart/form-data" class="mt-8">
+        {% csrf_token %}
+        
+        <input type="file" name="comprobante" id="comprobante" class="w-50 border rounded px-3 py-2 mb-4" required>
+        
+        <button type="submit" class="bg-blue-800 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-200">
+            Subir Comprobante
+        </button>         
+        
+    </form>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista de Facturas{% endblock %}
+
+{% block contenido %}
+
+<h1 class="text-3xl font-semibold text-center text-green-600 mb-6">Lista de Facturas</h1>
+
+<div class="bg-white">
+    
+    <div class="p-6">
+        
+        <table class="min-w-full table-auto">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Numero Factura</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Fecha Emision</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total Bruto</th>
+                    
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Estado</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Tipo Documento</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID Pedido</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID Nota Venta</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID Mix Carga</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Razon Social</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Direccion Fiscal</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">RUT</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for factura in facturas %}
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">{{ factura.id_factura }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ factura.numeroFactura }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ factura.fechaEmision }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ factura.totalBruto }}</td>
+                    
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ factura.estado }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ factura.tipoDocumento }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ factura.idPedido }}</td>
+                    
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ factura.razon_social }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ factura.direccion_fiscal }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ factura.rut }}</td>
+                    <td class="px-6 py-4 text-sm">
+                        <a href="{% url 'editar_factura' factura.id_factura %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center">
+                            Editar
+                        </a> |
+                        <a href="{% url 'eliminar_factura' factura.id_factura %}" class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 text-center">
+                            Borrar
+                        </a>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="p-4 text-center">
+        <a href="{% url 'crear_factura' %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            Agregar nueva factura
+        </a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+<!-- templates/confirmar_eliminacion_detalle_compra.html -->
+{% extends 'base.html' %}
+{% block titulo %}Confirmar Eliminación{% endblock %}
+
+{% block contenido %}
+<div class="max-w-md mx-auto mt-10 bg-white p-6 rounded shadow-md">
+    <h2 class="text-xl font-bold mb-4">¿Estás seguro de eliminar este detalle?</h2>
+    <p class="mb-4">{{ detalle.id_producto.nombre }} - {{ detalle.cantidad }} unidades</p>
+    
+    <form method="post" class="flex space-x-4">
+        {% csrf_token %}
+        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Sí, eliminar
+        </button>
+        <a href="{% url 'agregar_detalle_compra' compra_id=detalle.id_compraCorporativa.id_compra_corporativa %}" 
+           class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+            Cancelar
+        </a>
+    </form>
+</div>
+{% endblock %}

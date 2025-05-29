@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista Libro de Ventas{% endblock %}
+
+{% block contenido %}
+
+<h1 class="text-3xl font-semibold text-center text-green-600 mb-6">Lista de Libro de Ventas</h1>
+
+<div class="bg-white">
+    
+    <div class="p-6">
+        
+        <table class="min-w-full table-auto">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Fecha de registro</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total Facturado</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total iva</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total neto</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID Mix Carga</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lVenta in lVentas %}
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">{{ lVenta.id_libro_ventas }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ lVenta.fecha_registro }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ lVenta.total_Facturado }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ lVenta.total_iva }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ lVenta.total_Neto }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ lVenta.idMixCarga }}</td>
+                    <td class="px-6 py-4 text-sm">
+                        <a href="{% url 'editar_libroVenta' lVenta.id_libro_ventas %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center">
+                            Editar
+                        </a> |
+                        <a href="{% url 'eliminar_libroVenta' lVenta.id_libro_ventas %}" class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 text-center">
+                            Borrar
+                        </a>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="p-4 text-center">
+        <a href="{% url 'crear_libroVenta' %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            Agregar nuevo Libro de Ventas
+        </a>
+    </div>
+</div>
+
+{% endblock %}

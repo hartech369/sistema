@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Editar Distribuidor {% endblock %}
+
+{% block contenido %} 
+
+<div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg mt-8">
+    <!-- Encabezado de la tarjeta -->
+    <div class="bg-green-600 text-white rounded-t-lg py-4 px-6">
+        <h2 class="text-2xl font-semibold">Editar Información del distribuidor</h2>
+    </div>
+
+    <!-- Cuerpo de la tarjeta -->
+    <div class="p-6">
+        <h4 class="text-xl font-semibold text-gray-800 mb-4">Datos del distribuidor</h4>
+        <!-- Incluye el formulario de gaseosas -->
+        {% include 'lista_distribuidores/form_distribuidor.html' %}
+    </div>
+
+    <!-- Pie de la tarjeta -->
+    <div class="bg-gray-100 text-center py-4 rounded-b-lg">
+        <p class="text-gray-600">Realiza los cambios necesarios y guarda la información.</p>
+    </div>
+</div>
+
+{% endblock %}

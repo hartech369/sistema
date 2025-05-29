@@ -1,0 +1,51 @@
+<!-- templates/detalle_compra/agregar_detalle_compra.html -->
+{% extends 'base.html' %}
+{% block titulo %}Agregar Detalle a Compra #{{ compra.id_compra_corporativa }}{% endblock %}
+
+{% block contenido %}
+<div class="max-w-4xl mx-auto p-6">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h2 class="text-xl font-bold mb-4">Compra: {{ compra.numeroDocumento }}</h2>
+        
+        <form method="post" class="mb-4">
+            {% csrf_token %}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="id_producto">Producto</label>
+                    <select name="id_producto" id="id_producto" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        {% for producto in productos %}
+                        <option value="{{ producto.id_producto }}">{{ producto.nombre }} - ${{ producto.precio }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="cantidad">Cantidad</label>
+                    <input type="number" name="cantidad" id="cantidad" min="1" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 mt-4">
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="precioUnitario">Precio Unitario</label>
+                    <input type="number" name="precioUnitario" id="precioUnitario" step="0.01" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="descuento">Descuento</label>
+                    <input type="number" name="descuento" id="descuento" step="0.01" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+            </div>
+            
+            <div class="flex items-center justify-between mt-4">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Agregar Detalle
+                </button>
+                <a href="{% url 'lista_cCorporativas' %}" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                    Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

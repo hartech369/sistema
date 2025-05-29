@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista de productos{% endblock %}
+
+{% block contenido %}
+
+<h1 class="text-3xl font-semibold text-center text-green-600 mb-6">Lista de Productos</h1>
+
+<div class="bg-white">
+    
+    <div class="p-6">
+        
+        <table class="min-w-full table-auto">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Nombres</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Descripcion</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Precio</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Categoría</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Imagen</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">{{ producto.id_producto }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ producto.nombre }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ producto.descripcion }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ producto.precio }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ producto.categoria }}</td>
+                    <td class="px-6 py-4 text-sm">
+                        <img src="{{ producto.imagen.url }}" class="h-24 object-contain mx-auto" alt="Imagen de producto">
+                    </td>
+                    <td class="px-6 py-4 text-sm">
+                        <a href="{% url 'editar_producto' producto.id_producto %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center">
+                            Editar
+                        </a> |
+                        <a href="{% url 'eliminar' producto.id_producto %}" class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 text-center">
+                            Borrar
+                        </a>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="p-4 text-center">
+        <a href="{% url 'crear_producto' %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            Agregar nuevo producto
+        </a>
+    </div>
+</div>
+
+{% endblock %}

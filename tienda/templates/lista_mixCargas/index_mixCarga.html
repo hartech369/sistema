@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista de Mix de Cargas{% endblock %}
+
+{% block contenido %}
+
+<h1 class="text-3xl font-semibold text-center text-green-600 mb-6">Lista de Mix de Cargas</h1>
+
+<div class="bg-white">
+    
+    <div class="p-6">
+        
+        <table class="min-w-full table-auto">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Producto</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Descripcion</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Cantidad</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID Distribuidor</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mCarga in mCargas %}
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">{{ mCarga.id_mix_carga }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ mCarga.producto }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ mCarga.descripcion }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ mCarga.cantidad }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ mCarga.id_distribuidor }}</td>
+                    <td class="px-6 py-4 text-sm">
+                        <a href="{% url 'editar_mixCarga' mCarga.id_mix_carga %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center">
+                            Editar
+                        </a> |
+                        <a href="{% url 'eliminar_mixCarga' mCarga.id_mix_carga %}" class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 text-center">
+                            Borrar
+                        </a>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="p-4 text-center">
+        <a href="{% url 'crear_mixCarga' %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            Agregar nuevo Mix Carga
+        </a>
+    </div>
+</div>
+
+{% endblock %}

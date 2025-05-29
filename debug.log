@@ -1,0 +1,385 @@
+Watching for file changes with StatReloader
+Forbidden (Origin checking failed - null does not match any trusted origins.): /webpay/retorno/
+Forbidden (Origin checking failed - null does not match any trusted origins.): /webpay/retorno/
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /webpay/iniciar/, /confirmar_pago/
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /webpay/iniciar/, /confirmar_pago/
+Not Found: /webpay/iniciar/, /confirmar_pago/
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /webpay/iniciar/, /confirmar_pago/
+Watching for file changes with StatReloader
+Not Found: /webpay/iniciar/, /confirmar_pago/
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /webpay/iniciar/
+Traceback (most recent call last):
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\transbank\webpay\webpay_plus\transaction.py", line 34, in create
+    return RequestService.post(endpoint, TransactionCreateRequestSchema().dumps(request), self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\transbank\common\request_service.py", line 14, in post
+    return cls.process_response(response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\transbank\common\request_service.py", line 41, in process_response
+    raise TransbankError(message=dict_response["error_message"], code=response.status_code)
+transbank.error.transbank_error.TransbankError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py", line 1155, in iniciar_pago
+    response = tx.create(
+               ^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\transbank\webpay\webpay_plus\transaction.py", line 36, in create
+    raise TransactionCreateError(e.message, e.code)
+transbank.error.transaction_create_error.TransactionCreateError: ('Invalid value for parameter: amount', 422)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py", line 1166, in iniciar_pago
+    return render(request, 'error_pago.html', {'error': str(e)})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: error_pago.html
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /webpay/iniciar/
+Traceback (most recent call last):
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\transbank\webpay\webpay_plus\transaction.py", line 34, in create
+    return RequestService.post(endpoint, TransactionCreateRequestSchema().dumps(request), self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\transbank\common\request_service.py", line 14, in post
+    return cls.process_response(response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\transbank\common\request_service.py", line 41, in process_response
+    raise TransbankError(message=dict_response["error_message"], code=response.status_code)
+transbank.error.transbank_error.TransbankError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py", line 1272, in iniciar_pago
+    response = tx.create(
+               ^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\transbank\webpay\webpay_plus\transaction.py", line 36, in create
+    raise TransactionCreateError(e.message, e.code)
+transbank.error.transaction_create_error.TransactionCreateError: ('Invalid value for parameter: amount', 422)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py", line 1283, in iniciar_pago
+    return render(request, 'error_pago.html', {'error': str(e)})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: error_pago.html
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /lista_factura
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Not Found: /imagenes/nosotros.png
+Not Found: /imagenes/nosotros.png
+Not Found: /imagenes/nosotros.png
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /imagen1.jpg
+Not Found: /imagen2.jpg
+Not Found: /imagen3.jpg
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /enviar_contacto/
+Traceback (most recent call last):
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py", line 651, in enviar_contacto
+    return render(request, 'contacto_enviado.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: contacto_enviado.html
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\sistema\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\sites.py", line 425, in login
+    **self.each_context(request),
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\sites.py", line 338, in each_context
+    "available_apps": self.get_app_list(request),
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\sites.py", line 541, in get_app_list
+    app_dict = self._build_app_dict(request, app_label)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\sites.py", line 483, in _build_app_dict
+    has_module_perms = model_admin.has_module_permission(request)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\options.py", line 640, in has_module_permission
+    return request.user.has_module_perms(self.opts.app_label)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+           ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Persona' object has no attribute 'has_module_perms'
+Not Found: /admin
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\sites.py", line 425, in login
+    **self.each_context(request),
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\sites.py", line 338, in each_context
+    "available_apps": self.get_app_list(request),
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\sites.py", line 541, in get_app_list
+    app_dict = self._build_app_dict(request, app_label)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\sites.py", line 483, in _build_app_dict
+    has_module_perms = model_admin.has_module_permission(request)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\options.py", line 640, in has_module_permission
+    return request.user.has_module_perms(self.opts.app_label)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+           ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Persona' object has no attribute 'has_module_perms'
+Not Found: /admin
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\sites.py", line 425, in login
+    **self.each_context(request),
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\sites.py", line 338, in each_context
+    "available_apps": self.get_app_list(request),
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\sites.py", line 541, in get_app_list
+    app_dict = self._build_app_dict(request, app_label)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\sites.py", line 483, in _build_app_dict
+    has_module_perms = model_admin.has_module_permission(request)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\admin\options.py", line 640, in has_module_permission
+    return request.user.has_module_perms(self.opts.app_label)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arturo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+           ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Persona' object has no attribute 'has_module_perms'
+Watching for file changes with StatReloader
+Forbidden (Origin checking failed - null does not match any trusted origins.): /webpay/retorno/
+Watching for file changes with StatReloader
+Not Found: /tienda/pago_exitoso
+Not Found: /webpay/retorno/retorno_pago
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden (Origin checking failed - null does not match any trusted origins.): /webpay/retorno/
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\sistema\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\sistema\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\sistema\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\sistema\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\sistema\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\sistema\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden (Origin checking failed - null does not match any trusted origins.): /webpay/retorno/
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Pedido 262 creado exitosamente
+Pedido 263 creado exitosamente
+Pedido 264 creado exitosamente
+Pedido 265 creado exitosamente
+Pedido 266 creado exitosamente
+Pedido 267 creado exitosamente
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /l
+Pedido 268 creado exitosamente
+Pedido 269 creado exitosamente
+Pedido 270 creado exitosamente
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Pedido 275 creado exitosamente
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Pedido 276 creado exitosamente
+Pedido 277 creado exitosamente
+Pedido 278 creado exitosamente
+Pedido 279 creado exitosamente
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Arturo\Desktop\Programacion\sistemaV2\tienda\views.py changed, reloading.
+Watching for file changes with StatReloader
+Pedido 287 creado exitosamente
+Watching for file changes with StatReloader
+Pedido 288 creado exitosamente
+Pedido 289 creado exitosamente
+Pedido 290 creado exitosamente
+Pedido 291 creado exitosamente
+Pedido 292 creado exitosamente
+Pedido 293 creado exitosamente
+Pedido 294 creado exitosamente
+Pedido 295 creado exitosamente
+Pedido 296 creado exitosamente
+Pedido 297 creado exitosamente

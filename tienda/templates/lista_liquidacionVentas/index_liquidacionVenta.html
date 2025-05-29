@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista de liquidaciones de Ventas{% endblock %}
+
+{% block contenido %}
+
+<h1 class="text-3xl font-semibold text-center text-green-600 mb-6">Lista de liquidaciones de Ventas</h1>
+
+<div class="bg-white">
+    
+    <div class="p-6">
+        
+        <table class="min-w-full table-auto">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Fecha Liquidacion Ventas</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total Liquidado</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Cantidad de Ventas</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID Mix de Cargas</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for liVenta in liVentas %}
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">{{ liVenta.id_liquidacion_ventas }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ liVenta.fecha_liquidacion }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ liVenta.total_liquidado }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ liVenta.cantidadVentas }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ liVenta.idMixCarga }}</td>
+                    <td class="px-6 py-4 text-sm">
+                        <a href="{% url 'editar_liquidacionVenta' liVenta.id_liquidacion_ventas %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center">
+                            Editar
+                        </a> |
+                        <a href="{% url 'eliminar_liquidacionVenta' liVenta.id_liquidacion_ventas %}" class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 text-center">
+                            Borrar
+                        </a>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="p-4 text-center">
+        <a href="{% url 'crear_liquidacionVenta' %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            Agregar nueva liquidacion de Venta
+        </a>
+    </div>
+</div>
+
+{% endblock %}

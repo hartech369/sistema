@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista de Kardex{% endblock %}
+
+{% block contenido %}
+
+<h1 class="text-3xl font-semibold text-center text-green-600 mb-6">Lista de Kardex</h1>
+
+<div class="bg-white">
+    
+    <div class="p-6">
+        
+        <table class="min-w-full table-auto">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Producto</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Fecha Movimiento</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Cantidad</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Tipo Movimiento</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Stock Final</th>
+                    
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for kardex in kardexs %}
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">{{ kardex.id_kardex }}</td>
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">{{ kardex.producto }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ kardex.fecha_movimiento }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ kardex.cantidad }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ kardex.tipo_movimiento }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ kardex.stockFinal }}</td>
+                    
+                    <td class="px-6 py-4 text-sm">
+                        <a href="{% url 'editar_kardex' kardex.id_kardex %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center">
+                            Editar
+                        </a> |
+                        <a href="{% url 'eliminar_kardex' kardex.id_kardex %}" class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 text-center">
+                            Borrar
+                        </a>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="p-4 text-center">
+        <a href="{% url 'crear_kardex' %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            Agregar nuevo kardex
+        </a>
+    </div>
+</div>
+
+{% endblock %}

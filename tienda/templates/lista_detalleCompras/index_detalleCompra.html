@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista de Detalles de Compras{% endblock %}
+
+{% block contenido %}
+
+<h1 class="text-3xl font-semibold text-center text-green-600 mb-6">Lista de Detalles de Compras</h1>
+
+<div class="bg-white">
+    
+    <div class="p-6">
+        
+        <table class="min-w-full table-auto">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID Producto</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Cantidad</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Precio Unitario</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Descuento</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Subtotal</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">ID Compra Corporativa</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Numero de documento</th>
+
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for detCompra in detCompras %}
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">{{ detCompra.id_detalle_compra }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ detCompra.id_producto }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ detCompra.cantidad }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ detCompra.precioUnitario }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ detCompra.descuento }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ detCompra.subtotal }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ detCompra.id_compraCorporativa }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">{{ detCompra.numeroDoc }}</td>
+                    <td class="px-6 py-4 text-sm">
+                        <a href="{% url 'editar_detalleCompra' detCompra.id_detalle_compra %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center">
+                            Editar
+                        </a> |
+                        <a href="{% url 'eliminar_detalleCompra' detCompra.id_detalle_compra %}" class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 text-center">
+                            Borrar
+                        </a>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="p-4 text-center">
+        <a href="{% url 'crear_detalleCompra' %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            Agregar nuevo Detalle Compra
+        </a>
+    </div>
+</div>
+
+{% endblock %}

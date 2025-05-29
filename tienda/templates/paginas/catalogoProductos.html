@@ -1,0 +1,37 @@
+<!-- catalogoProductos.html -->
+{% extends 'base.html' %}
+{% block titulo %}Catálogo de Productos{% endblock %}
+{% block contenido %}
+<div class="py-8">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold text-center text-green-600 mb-8">Explora Nuestros Productos</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {% for producto in productos %}
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col items-center">
+                <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="h-48 object-cover">
+                <div class="p-4 flex-grow flex flex-col items-center">
+                    <h2 class="text-xl font-semibold text-gray-800 text-center">{{ producto.nombre }}</h2>
+                    <p class="text-gray-600 mt-2 text-center">{{ producto.descripcion }}</p>
+                    <div class="mt-4">
+                        <span class="text-lg font-bold text-green-600">CLP$ {{ producto.precio }}</span>
+                    </div>
+                    
+                    <p class="text-sm text-gray-600 mt-2 ">Stock: {{ producto.stock }}</p>
+
+                </div>
+                <div class="p-4 bg-gray-50 text-center w-full">
+                    <!-- Formulario para agregar al carrito con cantidad -->
+                    <form action="{% url 'agregar_al_carrito' producto.id_producto %}" method="POST" class="flex items-center justify-center space-x-2">
+                        {% csrf_token %}
+                        <input type="number" name="cantidad" value="0" min="0" class="w-16 border rounded px-2 py-1 text-center">
+                        <button type="submit" class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors duration-200">
+                            Agregar al Carrito
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
