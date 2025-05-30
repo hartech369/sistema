@@ -44,6 +44,11 @@ INSTALLED_APPS = [
 
 ]
 
+CSRF_TRUSTED_ORIGINS = ["https://sistema-production-ce84.up.railway.app"]
+
+
+
+
 # Configuración para ambiente de prueba (usar LIVE en producción)
 # settings.py
 TRANSBANK_COMMERCE_CODE = "597055555532"  # Código de comercio TEST
