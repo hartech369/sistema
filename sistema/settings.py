@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'tienda',
     #'widget_tweaks',
     'transbank',  # ✅ Asegúrate de que esté
+    'mysql.connector.django',
 
 ]
 
@@ -117,7 +118,7 @@ WEASYPRINT_SETTINGS = {
 
 DATABASES = {
 'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
         'NAME': 'railway',
         'USER': 'root',
         'PASSWORD': 'NqBmlOwcypFuPkbuOFILEluQVhjyweCQ',
