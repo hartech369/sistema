@@ -1,6 +1,6 @@
 {% load static %}
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <title>{% block title %} SnackISM - Los mejores snacks {% endblock %}</title>
     <!-- Required meta tags -->
@@ -12,110 +12,119 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!--<link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">-->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome para íconos -->
+    <script src="https://kit.fontawesome.com/a2e0e6f91f.js" crossorigin="anonymous"></script>
     
+    <style>
+      body {
+        font-family: 'Outfit', sans-serif;
+      }
+    </style>
+
 </head>
 
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen font-['Roboto']">
 
 <!-- Header --> 
-<header class="bg-[#00aa21] shadow-md py-6">
+<header class="bg-[#00aa21] shadow-md py-8 w-full h-full">
+  <nav class="container mx-auto px-4 flex items-center justify-between flex-wrap">
+    <!-- Logo -->
+    <div class="flex items-center space-x-2">
+      <a href="{% url 'inicio' %}" class="flex items-center space-x-2 text-white text-2xl font-bold">
+        <img src="{% url 'imagenes/papa.png' %}" alt="Logo" class="w-15 h-15">
+        <span class="text-3xl md:text-4xl font-extrabold tracking-tight">SnackISM</span>
+      </a>
+    </div>
 
-  <nav class="container mx-auto flex justify-between items-center px-6">
-      <!-- Logo -->
-      <div class="text-white font-bold tracking-tight text-3xl flex items-center space-x-2">
-          <a href="{% url 'inicio' %}" class="hover:text-green-500 transition-colors duration-300 flex items-center space-x-2">
-              <img src="{% url 'imagenes/papa.png' %}" alt="" class="w-12 h-12">
-              <span>SnackISM</span>
+    <!-- Botón hamburguesa -->
+    <div class="block md:hidden">
+      <button id="nav-toggle" class="text-white focus:outline-none">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Enlaces de navegación -->
+    <div id="nav-content" class="w-full md:flex md:items-center md:w-auto hidden mt-4 md:mt-0">
+    <div class="flex flex-col md:flex-row md:space-x-10 space-y-2 md:space-y-0 text-white font-semibold text-base md:text-lg">
+        <a href="{% url 'inicio' %}" class="hover:text-green-300"><i class="fas fa-star"></i> Inicio</a>
+        <a href="{% url 'catalogoProductos' %}" class="hover:text-green-300"><i class="fas fa-boxes"></i> Catálogo de productos</a>
+        <a href="{% url 'nosotros' %}" class="hover:text-green-300"><i class="fas fa-users"></i> Nosotros</a>
+        <a href="{% url 'contacto' %}" class="hover:text-green-300"><i class="fas fa-envelope"></i> Contacto</a>
+        <a href="{% url 'carrito' %}" class="hover:text-green-300"><i class="fas fa-shopping-cart"></i> Carrito</a>
+
+        {% if user.is_authenticated %}
+          <div class="flex items-center space-x-4">
+            <span class="italic">Hola, {{ user.nombres }} 😁</span>
+            <form action="{% url 'logout' %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="hover:text-gray-200">
+                Cerrar Sesión <i class="fas fa-sign-out-alt"></i>
+              </button>
+            </form>
+          </div>
+        {% else %}
+          <a href="{% url 'login' %}" class="hover:text-green-300">
+            Login <i class="fas fa-user"></i>
           </a>
+        {% endif %}
       </div>
-
-      <!-- Navigation Links -->
-      <div class="flex space-x-8 items-center justify-end w-full">
-          <a href="{% url 'inicio' %}" class="text-white hover:text-green-500 font-semibold transition-colors duration-300">
-            <i class="fas fa-star"></i> Inicio 
-          </a>
-          <a href="{% url 'catalogoProductos' %}" class="text-white hover:text-green-500 font-semibold transition-colors duration-300">
-            <i class="fas fa-boxes"></i> Catálogo de productos 
-          </a>
-          <a href="{% url 'nosotros' %}" class="text-white hover:text-green-500 font-semibold transition-colors duration-300">
-            <i class="fas fa-users"></i>  Nosotros 
-          </a>
-          <a href="{% url 'contacto' %}" class="text-white hover:text-green-500 font-semibold transition-colors duration-300">
-            <i class="fas fa-envelope"></i>  Contacto 
-          </a>
-          <a href="{% url 'carrito' %}" class="text-white hover:text-green-500 font-semibold transition-colors duration-300">
-            <i class="fas fa-shopping-cart"></i>  Carrito 
-          </a>
-
-          <!-- Mostrar Login o nombre de usuario y Cerrar Sesión -->
-          {% if user.is_authenticated %}
-              <div class="flex font-semibold items-center space-x-4">
-                  <span class="text-white italic">Hola, {{ user.nombres }} </span>&#128513;
-                  <!-- Formulario para cerrar sesión -->
-                  <form action="{% url 'logout' %}" method="POST" class="inline">
-                      {% csrf_token %}
-                      <button type="submit" class="text-white font-semibold hover:text-gray-200 transition-colors duration-300">
-                          Cerrar Sesión <i class="fas fa-sign-out-alt"></i>
-                      </button>
-                  </form>
-              </div>
-          {% else %}
-              <a href="{% url 'login' %}" class="text-white font-semibold hover:text-green-500 transition-colors duration-300">
-                  Login <i class="fas fa-user"></i>
-              </a>
-          {% endif %}
-      </div>
+    </div>
   </nav>
 </header>
 
-    <!-- Main Content -->    
-    <main class="container mx-auto p-4 flex-grow">
-        {% block contenido %} {% endblock %}
-    </main>
+<!-- Main Content -->
+<main class="container mx-auto px-4 py-6 flex-grow">
+  {% block contenido %}{% endblock %}
+</main>
 
-    <!-- Footer -->
-    <footer class="bg-[#f70808] shadow-md text-white py-6 mt-10">
-        <div class="container mx-auto px-4">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <!-- Social Media -->
-            <div>
-              <h5 class="text-lg font-bold mb-2">Síguenos</h5>
-              <p class="text-sm mb-4">Mantente informado de nuestras promociones.</p>
-              <ul class="flex space-x-4">
-                <li><a href="#" class="text-white hover:text-gray-200"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#" class="text-white hover:text-gray-200"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#" class="text-white hover:text-gray-200"><i class="fab fa-instagram"></i></a></li>
-              </ul>
-            </div>
-    
-            <!-- Office Info -->
-            <div>
-              <h5 class="text-lg font-bold mb-2">Oficinas</h5>
-              <p class="text-sm mb-4">Encuentra nuestras sucursales:</p>
-              <ul class="space-y-2 text-sm">
-                <li><i class="fas fa-map-marker-alt mr-2"></i>Arica: Av. Argentina 2997</li>
-              </ul>
-            </div>
-    
-            <!-- Contact Info -->
-            <div>
-              <h5 class="text-lg font-bold mb-2">Contáctanos</h5>
-              <ul class="space-y-2 text-sm">
-                <li><i class="fas fa-phone mr-2"></i> Teléfono: (+56) 800-914-223</li>
-                <li><i class="fas fa-envelope mr-2"></i> Correo: atencionalcliente@ism.global</li>
-              </ul>
-            </div>
-          </div>
-    
-          <!-- Copyright -->
-          <div class="text-center text-sm text-gray-200">
-            &copy; 2025 Hubert. Todos los derechos reservados.
-          </div>
+<!-- Footer -->
+<footer class="bg-[#f70808] text-white py-6 mt-10">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+      <div>
+        <h5 class="text-lg font-bold mb-2">Síguenos</h5>
+        <p class="text-sm mb-4">Mantente informado de nuestras promociones.</p>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-gray-200"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="hover:text-gray-200"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="hover:text-gray-200"><i class="fab fa-instagram"></i></a>
         </div>
-      </footer>
-    
+      </div>
 
+      <div>
+        <h5 class="text-lg font-bold mb-2">Oficinas</h5>
+        <p class="text-sm mb-4">Encuentra nuestras sucursales:</p>
+        <ul class="text-sm space-y-2">
+          <li><i class="fas fa-map-marker-alt mr-2"></i>Arica: Av. Argentina 2997</li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="text-lg font-bold mb-2">Contáctanos</h5>
+        <ul class="text-sm space-y-2">
+          <li><i class="fas fa-phone mr-2"></i>(+56) 800-914-223</li>
+          <li><i class="fas fa-envelope mr-2"></i>atencionalcliente@ism.global</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-center text-sm text-gray-200">
+      &copy; 2025 Hubert. Todos los derechos reservados.
+    </div>
+  </div>
+</footer>
+
+<!-- JS para hamburguesa -->
+<script>
+  const navToggle = document.getElementById("nav-toggle");
+  const navContent = document.getElementById("nav-content");
+
+  navToggle.addEventListener("click", () => {
+    navContent.classList.toggle("hidden");
+  });
+</script>
 
 </body>
 </html>
