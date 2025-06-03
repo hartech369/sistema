@@ -44,7 +44,9 @@ INSTALLED_APPS = [
 
 ]
 
-CSRF_TRUSTED_ORIGINS = ["https://sistema-production-ce84.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://sistema-production-ce84.up.railway.app",
+                        "https://snackism.lat",
+]
 
 
 
