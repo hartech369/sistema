@@ -9,14 +9,6 @@ class PersonaForm(forms.ModelForm):
             'telefono', 'email', 'direccion', 'ciudad',
             'mapa_url', 'rol'
         ]
-        widgets = {
-            'nombres': forms.TextInput(attrs={'style': 'text-transform: uppercase;'}),
-            'apellidos': forms.TextInput(attrs={'style': 'text-transform: uppercase;'}),
-            'direccion': forms.TextInput(attrs={'style': 'text-transform: uppercase;'}),
-            'ciudad': forms.TextInput(attrs={'style': 'text-transform: uppercase;'}),
-            'rol': forms.TextInput(attrs={'style': 'text-transform: uppercase;'}),
-            # El campo 'email' se deja sin estilo para mantener su formato original
-        }
         
         
 class ProductoForm(forms.ModelForm):

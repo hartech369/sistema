@@ -38,9 +38,9 @@ class Persona(AbstractBaseUser):
     mapa_url = models.URLField(null=True, blank=True) 
 
     rol = models.CharField(max_length=50, choices=[
-        ('CLIENTE', 'Cliente'),
-        ('VENDEDOR', 'Vendedor'),
-        ('ADMINISTRADOR', 'Administrador')
+        ('Cliente', 'Cliente'),
+        ('Vendedor', 'Vendedor'),
+        ('Administrador', 'Administrador')
     ])
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -52,12 +52,6 @@ class Persona(AbstractBaseUser):
     REQUIRED_FIELDS = ['nombres', 'apellidos']  # Campos requeridos al crear un usuario
 
     def save(self, *args, **kwargs):
-        self.nombres = self.nombres.upper()
-        self.apellidos = self.apellidos.upper()
-                        
-        self.direccion = self.direccion.upper()
-        self.ciudad = self.ciudad.upper()
-        self.rol = self.rol.upper()
         if self.rut:  # Solo calcular si hay un RUT
             self.diVerifica = calcular_dv(self.rut)  # Calcula el dígito verificador
         super().save(*args, **kwargs)
