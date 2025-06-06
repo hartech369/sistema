@@ -52,6 +52,14 @@ class Persona(AbstractBaseUser):
     REQUIRED_FIELDS = ['nombres', 'apellidos']  # Campos requeridos al crear un usuario
 
     def save(self, *args, **kwargs):
+        self.nombres = self.nombres.upper()
+        self.apellidos = self.apellidos.upper()
+        self.rut = self.rut.upper()
+        self.diVerifica = self.diVerifica.upper()
+        self.telefono = self.telefono.upper()
+        self.direccion = self.direccion.upper()
+        self.ciudad = self.ciudad.upper()
+        self.rol = self.rol.upper()
         if self.rut:  # Solo calcular si hay un RUT
             self.diVerifica = calcular_dv(self.rut)  # Calcula el dígito verificador
         super().save(*args, **kwargs)
