@@ -35,6 +35,8 @@ class Persona(AbstractBaseUser):
     email = models.EmailField(unique=True)
     direccion = models.TextField(blank=True, null=True)
     ciudad = models.CharField(max_length=50, blank=True, null=True)
+    mapa_url = models.URLField(null=True, blank=True) 
+
     rol = models.CharField(max_length=50, choices=[
         ('Cliente', 'Cliente'),
         ('Vendedor', 'Vendedor'),

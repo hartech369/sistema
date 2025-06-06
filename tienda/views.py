@@ -150,7 +150,9 @@ def registrar_usuario(request):
         rut = request.POST.get('rut')
         telefono = request.POST.get('telefono')
         direccion = request.POST.get('direccion')
-
+        ciudad = request.POST.get('ciudad')
+        mapa_url = request.POST.get('mapa_url')
+        
         # Cifrar la contraseña antes de guardarla
         hashed_password = make_password(password)
 
@@ -162,6 +164,9 @@ def registrar_usuario(request):
             rut=rut,
             telefono=telefono,
             direccion=direccion,
+            ciudad=ciudad,
+            mapa_url=mapa_url,
+            
             rol='Cliente'
         )
         return redirect('login')  # Redirige al formulario de inicio de sesión

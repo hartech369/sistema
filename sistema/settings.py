@@ -56,7 +56,7 @@ CSRF_TRUSTED_ORIGINS = ["https://sistema-production-ce84.up.railway.app",
 TRANSBANK_COMMERCE_CODE = "597055555532"  # Código de comercio TEST
 TRANSBANK_API_KEY = "579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C"  # API Key TEST
 TRANSBANK_ENVIRONMENT = "INTEGRATION"  # "LIVE" en producción
-TRANSBANK_RETURN_URL = "http://127.0.0.1:8000/webpay/retorno/"  # Ajusta esta URL
+TRANSBANK_RETURN_URL = "https://snackism.lat/webpay/retorno/"  # Ajusta esta URL
 
 # Logging (opcional pero recomendado)
 LOGGING = {
