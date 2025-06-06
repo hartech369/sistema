@@ -55,7 +55,7 @@ class Persona(AbstractBaseUser):
         self.nombres = self.nombres.upper()
         self.apellidos = self.apellidos.upper()
         self.rut = self.rut.upper()
-        self.diVerifica = self.diVerifica.upper()
+        
         self.telefono = self.telefono.upper()
         self.direccion = self.direccion.upper()
         self.ciudad = self.ciudad.upper()
