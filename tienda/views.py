@@ -25,8 +25,8 @@ from reportlab.lib.utils import ImageReader
 from tienda.utils import calcular_subtotal, numero_a_palabras
 
 
-from .forms import DetalleFacturaForm, FacturaForm, KardexForm, NotaVentaForm, PersonaForm, ProductoForm, RutaForm, DistribuidorForm, AlmacenForm, CCorporativaForm, PedidoForm, DetallePedidoForm, DetalleCompraForm, MixCargaForm, LibroVentasForm, LiquidacionDistribucionForm, LiquidacionVentasForm, InventarioForm
-from .models import DetalleFactura, Factura, Inventario, Kardex, NotaVenta, Persona, Producto, Ruta, Distribuidor, Almacen, CompraCorporativa, Pedido, DetallePedido, DetalleCompra, MixCarga, LibroVentas, LiquidacionDistribucion, LiquidacionVentas
+from .forms import DetalleFacturaForm, FacturaForm, KardexForm, NotaVentaForm, PersonaForm, ProductoForm, RutaForm, DistribuidorForm, AlmacenForm, CCorporativaForm, PedidoForm, DetallePedidoForm, DetalleCompraForm, MixCargaForm, LibroVentasForm, LiquidacionDistribucionForm, LiquidacionVentasForm, InventarioForm, MensajeContactoForm
+from .models import DetalleFactura, Factura, Inventario, Kardex, NotaVenta, Persona, Producto, Ruta, Distribuidor, Almacen, CompraCorporativa, Pedido, DetallePedido, DetalleCompra, MixCarga, LibroVentas, LiquidacionDistribucion, LiquidacionVentas, MensajeContacto
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
@@ -649,11 +649,30 @@ def login_view(request):
     return render(request, 'paginas/login.html')
 
 def contacto(request):
-    return render(request, 'paginas/contacto.html')
+    if request.method == 'POST':
+        form = MensajeContactoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'paginas/contacto.html', {
+                'form': MensajeContactoForm(),  # limpia el formulario
+                'mensaje_exito': 'Tu mensaje ha sido enviado con éxito.'
+            })
+    else:
+        form = MensajeContactoForm()
+    
+    return render(request, 'paginas/contacto.html', {'form': form})
 
 def enviar_contacto(request):
-    # Lógica para procesar el formulario de contacto
-    return render(request, 'contacto_enviado.html')
+    if request.method == 'POST':
+        form = MensajeContactoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Tu mensaje ha sido enviado con éxito.')
+            return redirect('contacto')  # Vuelve a cargar la misma página
+    else:
+        form = MensajeContactoForm()
+
+    return render(request, 'paginas/contacto.html', {'form': form})
 
 
 def editar(request,id):
@@ -1300,3 +1319,8 @@ def pago_exitoso(request, factura_id):
     return render(request, 'tienda/pago_exitoso.html', {
         'factura': factura
     })
+    
+
+def listar_mensajes(request):
+    mensajes = MensajeContacto.objects.all().order_by('-fecha_envio')  # Más recientes primero
+    return render(request, 'paginas/mensajesClientes.html', {'mensajes': mensajes})

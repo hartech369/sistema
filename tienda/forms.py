@@ -1,5 +1,5 @@
 from django import forms
-from .models import DetalleFactura, Factura, Persona, Producto, Ruta, Distribuidor, Almacen, CompraCorporativa, Pedido, DetallePedido, DetalleCompra, MixCarga, LibroVentas, LiquidacionDistribucion, LiquidacionVentas, Inventario, Kardex, NotaVenta
+from .models import DetalleFactura, Factura, Persona, Producto, Ruta, Distribuidor, Almacen, CompraCorporativa, Pedido, DetallePedido, DetalleCompra, MixCarga, LibroVentas, LiquidacionDistribucion, LiquidacionVentas, Inventario, Kardex, NotaVenta, MensajeContacto
 
 class PersonaForm(forms.ModelForm):
     class Meta:
@@ -138,4 +138,7 @@ class NotaVentaForm(forms.ModelForm):
         }
         fields = '__all__'
         
-        
+class MensajeContactoForm(forms.ModelForm):
+    class Meta:
+        model = MensajeContacto
+        fields = ['nombre', 'email', 'mensaje']

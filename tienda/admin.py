@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Persona, Producto, Ruta, Distribuidor, Almacen, CompraCorporativa, Pedido, DetallePedido, DetalleCompra, MixCarga, LibroVentas, LiquidacionDistribucion, LiquidacionVentas, Kardex, DetalleFactura
+from .models import Persona, Producto, Ruta, Distribuidor, Almacen, CompraCorporativa, Pedido, DetallePedido, DetalleCompra, MixCarga, LibroVentas, LiquidacionDistribucion, LiquidacionVentas, Kardex, DetalleFactura, MensajeContacto
 # Register your models here.
 
 admin.site.register(Persona)
@@ -27,3 +27,6 @@ class PedidoAdmin(admin.ModelAdmin):
 @admin.register(DetallePedido)
 class DetallePedidoAdmin(admin.ModelAdmin):
     list_display = ('id_detalle_pedido', 'idPedido', 'idProducto', 'cantidad', 'precioUnitario', 'subtotal')
+    
+
+admin.site.register(MensajeContacto)

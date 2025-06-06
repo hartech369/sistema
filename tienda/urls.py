@@ -12,6 +12,9 @@ urlpatterns = [
     path('nosotros', views.nosotros, name='nosotros'),
     path('contacto/', views.contacto, name='contacto'),  # Nueva ruta para contacto
     path('enviar_contacto/', views.enviar_contacto, name='enviar_contacto'),
+    path('mensajes/', views.listar_mensajes, name='listar_mensajes'),
+
+    
     path('catalogoProductos', views.catalogoProductos, name='catalogoProductos'),
     path('carrito', views.carrito_view, name='carrito'),
     path('limpiar_carrito/', views.limpiar_carrito, name='limpiar_carrito'),  # Nueva ruta para limpiar el carrito
@@ -104,6 +107,7 @@ urlpatterns = [
     path('lista_detalleFacturas/editar_detalleFactura/<int:id>',views.editar_detalleFactura,name='editar_detalleFactura'),
     path('lista_facturas/editar_factura/<int:id>',views.editar_factura,name='editar_factura'),
     path('lista_notaVentas/editar_notaVenta/<int:id>',views.editar_notaVenta,name='editar_notaVenta'),    
+    
     
     path('tienda', views.tienda_view, name='tienda'),  # Asegúrate de tener esta línea
     path('menu', views.menu_view, name='menu'),
