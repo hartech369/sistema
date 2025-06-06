@@ -38,9 +38,9 @@ class Persona(AbstractBaseUser):
     mapa_url = models.URLField(null=True, blank=True) 
 
     rol = models.CharField(max_length=50, choices=[
-        ('Cliente', 'Cliente'),
-        ('Vendedor', 'Vendedor'),
-        ('Administrador', 'Administrador')
+        ('CLIENTE', 'Cliente'),
+        ('VENDEDOR', 'Vendedor'),
+        ('ADMINISTRADOR', 'Administrador')
     ])
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -54,9 +54,7 @@ class Persona(AbstractBaseUser):
     def save(self, *args, **kwargs):
         self.nombres = self.nombres.upper()
         self.apellidos = self.apellidos.upper()
-        self.rut = self.rut.upper()
-        
-        self.telefono = self.telefono.upper()
+                        
         self.direccion = self.direccion.upper()
         self.ciudad = self.ciudad.upper()
         self.rol = self.rol.upper()

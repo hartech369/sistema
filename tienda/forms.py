@@ -12,9 +12,6 @@ class PersonaForm(forms.ModelForm):
         widgets = {
             'nombres': forms.TextInput(attrs={'style': 'text-transform: uppercase;'}),
             'apellidos': forms.TextInput(attrs={'style': 'text-transform: uppercase;'}),
-            'rut': forms.TextInput(attrs={'style': 'text-transform: uppercase;'}),
-            'diVerifica': forms.TextInput(attrs={'style': 'text-transform: uppercase;'}),
-            'telefono': forms.TextInput(attrs={'style': 'text-transform: uppercase;'}),
             'direccion': forms.TextInput(attrs={'style': 'text-transform: uppercase;'}),
             'ciudad': forms.TextInput(attrs={'style': 'text-transform: uppercase;'}),
             'rol': forms.TextInput(attrs={'style': 'text-transform: uppercase;'}),
