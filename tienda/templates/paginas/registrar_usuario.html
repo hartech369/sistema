@@ -77,10 +77,10 @@
 
                     if (direccion && ciudad) {
                         const ubicacion = encodeURIComponent(`${direccion}, ${ciudad}`);
-                        const url = `https://www.google.com/maps?q=${ubicacion}&output=embed`;
+                        const mapaUrlBase = `https://www.google.com/maps?q=${ubicacion}`;
 
-                        mapaIframe.src = url;
-                        mapaUrlInput.value = url;  // Guardamos la URL del mapa
+                        mapaIframe.src = mapaUrlBase + '&output=embed';  // Solo para mostrar
+                        mapaUrlInput.value = mapaUrlBase;                // Guardamos limpio
                         mapaContainer.classList.remove("hidden");
                     } else {
                         mapaContainer.classList.add("hidden");
@@ -90,6 +90,7 @@
                 direccionInput.addEventListener("input", actualizarMapa);
                 ciudadInput.addEventListener("input", actualizarMapa);
             </script>
+
 
 
             <button type="submit" class="w-full py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">

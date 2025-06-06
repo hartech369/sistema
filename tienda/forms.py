@@ -4,7 +4,11 @@ from .models import DetalleFactura, Factura, Persona, Producto, Ruta, Distribuid
 class PersonaForm(forms.ModelForm):
     class Meta:
         model = Persona
-        fields = '__all__'
+        fields = [
+            'nombres', 'apellidos', 'rut', 'diVerifica',
+            'telefono', 'email', 'direccion', 'ciudad',
+            'mapa_url', 'rol'
+        ]
         
         
 class ProductoForm(forms.ModelForm):
