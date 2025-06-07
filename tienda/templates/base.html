@@ -57,7 +57,7 @@
     
         {% if user.is_authenticated %}
           <div class="flex items-center space-x-2 text-sm md:text-base">
-            <span class="italic truncate max-w-[150px]">Hola😁, {{ user.nombres }} </span>
+            <a href="{% url 'perfil_usuario' %}" ><span class="text-green-300 hover:text-red-300"> {{ user.nombres }} <i class="fas fa-user text-xl"></i> </span></a>
             <form action="{% url 'logout' %}" method="POST">
               {% csrf_token %}
               <button type="submit" class="hover:text-gray-200 whitespace-nowrap">

@@ -3,6 +3,7 @@ from . import views
 from django.conf import settings
 from django.contrib.staticfiles.urls import static
 from django.contrib.auth.views import LogoutView
+    
 
 #from .views import crear_transaccion_transferencia, iniciar_pago_transferencia, webhook_payku
 
@@ -128,4 +129,6 @@ urlpatterns = [
     path('webpay/iniciar/', views.iniciar_pago, name='iniciar_pago'),
     path('webpay/retorno/', views.retorno_pago, name='retorno_pago'),
     
+    path('perfil/', views.perfil_usuario, name='perfil_usuario'),
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

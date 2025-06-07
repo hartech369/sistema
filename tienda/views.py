@@ -25,7 +25,7 @@ from reportlab.lib.utils import ImageReader
 from tienda.utils import calcular_subtotal, numero_a_palabras
 
 
-from .forms import DetalleFacturaForm, FacturaForm, KardexForm, NotaVentaForm, PersonaForm, ProductoForm, RutaForm, DistribuidorForm, AlmacenForm, CCorporativaForm, PedidoForm, DetallePedidoForm, DetalleCompraForm, MixCargaForm, LibroVentasForm, LiquidacionDistribucionForm, LiquidacionVentasForm, InventarioForm, MensajeContactoForm
+from .forms import DetalleFacturaForm, FacturaForm, KardexForm, NotaVentaForm, PersonaForm, ProductoForm, RutaForm, DistribuidorForm, AlmacenForm, CCorporativaForm, PedidoForm, DetallePedidoForm, DetalleCompraForm, MixCargaForm, LibroVentasForm, LiquidacionDistribucionForm, LiquidacionVentasForm, InventarioForm, MensajeContactoForm, PerfilForm
 from .models import DetalleFactura, Factura, Inventario, Kardex, NotaVenta, Persona, Producto, Ruta, Distribuidor, Almacen, CompraCorporativa, Pedido, DetallePedido, DetalleCompra, MixCarga, LibroVentas, LiquidacionDistribucion, LiquidacionVentas, MensajeContacto
 
 from django.contrib.auth.forms import AuthenticationForm
@@ -41,6 +41,10 @@ import uuid
 
 from django.views.decorators.csrf import csrf_exempt
 import json
+
+from django.contrib.auth import update_session_auth_hash
+
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 # Create your views here.
@@ -1324,3 +1328,40 @@ def pago_exitoso(request, factura_id):
 def listar_mensajes(request):
     mensajes = MensajeContacto.objects.all().order_by('-fecha_envio')  # Más recientes primero
     return render(request, 'paginas/mensajesClientes.html', {'mensajes': mensajes})
+
+@login_required
+def perfil_usuario(request):
+    usuario = request.user
+
+    if request.method == 'POST':
+        if 'actualizar_datos' in request.POST:
+            form = PerfilForm(request.POST, instance=usuario)
+            pass_form = PasswordChangeForm(usuario)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Datos actualizados correctamente.')
+                return redirect('perfil_usuario')
+
+        elif 'actualizar_password' in request.POST:
+            form = PerfilForm(instance=usuario)
+            pass_form = PasswordChangeForm(usuario, request.POST)
+            if pass_form.is_valid():
+                user = pass_form.save()
+                update_session_auth_hash(request, user)
+                messages.success(request, 'Contraseña actualizada correctamente.')
+                return redirect('perfil_usuario')
+            else:
+                print(pass_form.errors)  # Para depurar en consola    
+                messages.error(request, 'Error al actualizar la contraseña. Verifica los datos.')
+
+        else:
+            form = PerfilForm(instance=usuario)
+            pass_form = PasswordChangeForm(usuario)
+    else:
+        form = PerfilForm(instance=usuario)
+        pass_form = PasswordChangeForm(usuario)
+
+    return render(request, 'paginas/perfil.html', {
+        'form': form,
+        'pass_form': pass_form
+    })

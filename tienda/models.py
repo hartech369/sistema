@@ -33,7 +33,7 @@ class Persona(AbstractBaseUser):
     diVerifica = models.CharField(max_length=2, blank=True, null=True)
     telefono = models.CharField(max_length=20, blank=True, null=True)
     email = models.EmailField(unique=True)
-    direccion = models.TextField(blank=True, null=True)
+    direccion = models.CharField(max_length=200,blank=True, null=True)
     ciudad = models.CharField(max_length=50, blank=True, null=True)
     mapa_url = models.URLField(null=True, blank=True) 
 
@@ -44,7 +44,7 @@ class Persona(AbstractBaseUser):
     ])
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    password = models.CharField(max_length=128, default=make_password("contraseña_temporal"))
+    password = models.CharField(max_length=128)
 
     objects = PersonaManager()
 

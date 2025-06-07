@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+
+<div class="max-w-3xl mx-auto mt-10 bg-white shadow-md rounded-lg p-6">
+  <h2 class="text-2xl font-bold mb-6 text-gray-800">Mi Perfil</h2>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="mb-4 px-4 py-3 rounded bg-green-100 border border-green-400 text-green-800">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+  <!-- Formulario para actualizar datos personales -->
+  <form method="POST">
+    {% csrf_token %}
+    <h3 class="text-lg font-semibold text-gray-700 mb-4">Datos Personales</h3>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700">Nombres</label>
+      <p class="border border-gray-300 rounded w-50">{{ form.nombres }}</p>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700">Apellidos</label>
+      <p class="border border-gray-300 rounded w-50">{{ form.apellidos }}</p>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700">Teléfono</label>
+      <p class="border border-gray-300 rounded w-50">{{ form.telefono }}</p>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700">Dirección</label>
+      <p class="border border-gray-300 rounded w-50">{{ form.direccion }}</p>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700">Ciudad</label>
+      <p class="border border-gray-300 rounded w-50">{{ form.ciudad }}</p>
+    </div>
+    <!-- Campo oculto para guardar la URL del mapa -->
+    <input type="hidden" id="mapa_url" name="mapa_url" value="{{ form.mapa_url.value|default:'' }}" />
+    <!-- Contenedor para el mapa -->
+    <div id="mapa" class="mb-6 {% if not form.mapa_url.value %}hidden{% endif %}">
+      <label class="block text-gray-700 mb-2">Ubicación en el mapa:</label>
+      <iframe id="mapaIframe"
+              class="w-full h-64 rounded border"
+              style="border:0;"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+      <p class="border border-gray-300 rounded w-50">{{ form.email }}</p>
+    </div>
+    <button type="submit" name="actualizar_datos"
+      class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+      Actualizar Datos
+    </button>
+  </form>
+  <hr class="my-8">
+
+{% if pass_form.errors %}
+  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+    <ul class="list-disc list-inside text-sm">
+      {% for field in pass_form %}
+        {% for error in field.errors %}
+          <li>{{ field.label }}: {{ error }}</li>
+        {% endfor %}
+      {% endfor %}
+      {% for error in pass_form.non_field_errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+
+  <!-- Formulario para cambiar la contraseña -->
+  <h2 class="text-lg font-semibold mb-2">Cambiar contraseña</h2>
+  <form method="post">
+      {% csrf_token %}
+      <!-- Campo: Contraseña actual -->
+      <div class="mb-4">
+        <label for="{{ pass_form.old_password.id_for_label }}" class="block text-sm font-medium text-gray-700">
+          Contraseña actual
+        </label>
+        <div class="mt-1 border border-gray-300 rounded w-50">
+          {{ pass_form.old_password }}
+        </div>
+      </div>
+
+      <!-- Campo: Nueva contraseña -->
+      <div class="mb-4">
+        <label for="{{ pass_form.new_password1.id_for_label }}" class="block text-sm font-medium text-gray-700">
+          Nueva contraseña
+        </label>
+        <div class="mt-1 border border-gray-300 rounded w-50">
+          {{ pass_form.new_password1 }}
+        </div>
+      </div>
+
+      <!-- Campo: Confirmar nueva contraseña -->
+      <div class="mb-4">
+        <label for="{{ pass_form.new_password2.id_for_label }}" class="block text-sm font-medium text-gray-700">
+          Confirmar nueva contraseña
+        </label>
+        <div class="mt-1 border border-gray-300 rounded w-50">
+          {{ pass_form.new_password2 }}
+        </div>
+      </div>
+
+      <button type="submit" name="actualizar_password" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Actualizar Contraseña</button>
+  </form>
+</div>
+
+<!-- Script para cargar el mapa -->
+<script>
+  const direccionInput = document.querySelector("input[name='direccion']");
+  const ciudadInput = document.querySelector("input[name='ciudad']");
+  const mapaIframe = document.getElementById("mapaIframe");
+  const mapaContainer = document.getElementById("mapa");
+  const mapaUrlInput = document.getElementById("mapa_url");
+
+  function actualizarMapa() {
+    const direccion = direccionInput.value.trim();
+    const ciudad = ciudadInput.value.trim();
+
+    if (direccion && ciudad) {
+      const ubicacion = encodeURIComponent(`${direccion}, ${ciudad}`);
+      const mapaUrlBase = `https://www.google.com/maps?q=${ubicacion}`;
+
+      mapaIframe.src = mapaUrlBase + '&output=embed';
+      mapaUrlInput.value = mapaUrlBase;
+      mapaContainer.classList.remove("hidden");
+    } else {
+      mapaContainer.classList.add("hidden");
+    }
+  }
+
+  // Cargar mapa si ya hay valores guardados
+  window.addEventListener('DOMContentLoaded', () => {
+    if (direccionInput.value.trim() && ciudadInput.value.trim()) {
+      mapaContainer.classList.remove("hidden");
+      mapaIframe.src = mapaUrlInput.value + '&output=embed';
+    }
+  });
+
+  // Eventos de entrada para actualizar el mapa
+  direccionInput.addEventListener("input", actualizarMapa);
+  ciudadInput.addEventListener("input", actualizarMapa);
+</script>
+{% endblock %}

@@ -1,5 +1,8 @@
 from django import forms
 from .models import DetalleFactura, Factura, Persona, Producto, Ruta, Distribuidor, Almacen, CompraCorporativa, Pedido, DetallePedido, DetalleCompra, MixCarga, LibroVentas, LiquidacionDistribucion, LiquidacionVentas, Inventario, Kardex, NotaVenta, MensajeContacto
+from django.contrib.auth.forms import PasswordChangeForm
+
+
 
 class PersonaForm(forms.ModelForm):
     class Meta:
@@ -142,3 +145,8 @@ class MensajeContactoForm(forms.ModelForm):
     class Meta:
         model = MensajeContacto
         fields = ['nombre', 'email', 'mensaje']
+
+class PerfilForm(forms.ModelForm):
+    class Meta:
+        model = Persona
+        fields = ['nombres', 'apellidos', 'telefono', 'direccion', 'email', 'ciudad', 'mapa_url']        
