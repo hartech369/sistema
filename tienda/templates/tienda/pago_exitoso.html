@@ -8,10 +8,5 @@
     <pre>{{ response|pprint }}</pre>
     <p>Tu factura #{{ factura.numeroFactura }} ha sido generada.</p>
     
-
-    
-    <br>
-    <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md cursor-pointer transition-colors duration-200"><a href="{% url 'catalogoProductos' %}">Volver a comprar</a></button>
-    <button class="bg-black hover:bg-black text-white font-semibold py-2 px-4 rounded-md cursor-pointer transition-colors duration-200"><a href="{% url 'descargar_factura' factura.id_factura %}"> Descargar Factura</a></button>
    
 {% endblock %}
