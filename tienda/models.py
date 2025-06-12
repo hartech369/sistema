@@ -76,7 +76,7 @@ class Pedido(models.Model):
     fecha_entrega = models.DateTimeField(default=timezone.now)
     total = models.DecimalField(max_digits=10, decimal_places=0, default=0)
     estado = models.CharField(max_length=50, choices=[('Pendiente', 'Pendiente'), ('En proceso', 'En proceso'), ('Completado', 'Completado'), ('Cancelado', 'Cancelado')])  
-    id_ruta = models.ForeignKey(Ruta, on_delete=models.CASCADE, null=False, blank=True, default=None)
+    id_ruta = models.ForeignKey(Ruta, on_delete=models.CASCADE, null=True, blank=True, default=None)
 
     def __str__(self):
         return f"Pedido {self.id_pedido} - {self.id_cliente.nombres}"
