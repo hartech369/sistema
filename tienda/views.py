@@ -1274,7 +1274,8 @@ def retorno_pago(request):
                 idPedido=pedido,
                 estado='Completado',
                 razon_social=f"{cliente.nombres} {cliente.apellidos}",
-                rut=cliente.rut
+                rut=cliente.rut,
+                direccion_fiscal=cliente.direccion
             )
             
             # 6. Crear detalles de factura
