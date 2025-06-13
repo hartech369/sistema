@@ -131,4 +131,5 @@ urlpatterns = [
     
     path('perfil/', views.perfil_usuario, name='perfil_usuario'),
 
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
